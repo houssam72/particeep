@@ -10,8 +10,7 @@ class App extends Component {
 
   return (
     <div>
-           
-          
+            <Particle/>
             <Logo/>
             <MyCard/>
     </div>
