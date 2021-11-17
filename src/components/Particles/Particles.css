@@ -1,0 +1,10 @@
+
+.particles{
+  position: fixed;
+  top:0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+  background: linear-gradient(129deg, rgba(208,139,139,1) 13%, rgba(215,74,67,1) 43%, rgba(20,10,10,1) 92%);
+}
