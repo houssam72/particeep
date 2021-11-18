@@ -3,18 +3,28 @@ import './Searchbox.css';
 
 class Searchbox extends Component {
 
+
+
    constructor(props){
      super(props)
-     this.items=[
-        'Comedy','Animation','Drame','Thriller',
-     ];
+     
 
      this.state={
         suggestions:[],
         item:[],
         text:'',
+        ana:[],
      }
   }
+
+   componentDidMount(){
+     this.props.movies.forEach(
+       movie=>{ 
+        if(this.state.ana.indexOf(movie.category) === -1){
+        this.state.ana.push(movie.category)
+          }
+        })
+   }
 
    onTextChanged=(event)=>{
        const value=event.target.value;
@@ -25,12 +35,15 @@ class Searchbox extends Component {
           }));
        }else{
         const regex= new RegExp(`^${value}`,'i');
-        const suggestions=this.items.sort().filter(v=>regex.test(v))
+        const suggestions=this.state.ana.sort().filter(v=>regex.test(v))
         this.setState(()=>({suggestions,text:value}))
        }
+
       
-     console.log(this.state.item, this.items.sort(),this.items)  
-   }
+     
+
+}
+   
   
   suggestionSelected(value){
    
@@ -48,7 +61,7 @@ class Searchbox extends Component {
      return null;
    }
    return (
-           <ul>
+           <ul className="tc center br3">
            {suggestions.map((item)=><li onClick={()=>this.suggestionSelected(item)} >{item}</li>)}
            </ul>
     );

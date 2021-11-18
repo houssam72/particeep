@@ -1,0 +1,21 @@
+button {
+  background-color: transparent;
+  border-radius: 100%;
+  border: 1px solid white;
+  cursor: pointer;
+
+}
+p{
+  display: inline;
+  margin-right: 20px;
+  margin-left: 5px;
+}
+.activeD {
+  border: 1px solid black;
+  background-color:#cc3924;
+}
+
+.activeL {
+  border: 1px solid black;
+  background-color: #1ab94a;
+}

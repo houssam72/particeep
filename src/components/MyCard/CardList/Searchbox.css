@@ -17,11 +17,20 @@
 .autocompleteText ul {
   list-style-type: none;
   text-align: center;
-  margin: 0;
+  margin-top: 0;
   padding: 0;
+ 	background:linear-gradient(129deg, rgba(208,139,139,1) 13%, rgba(215,74,67,1) 43%, rgba(20,10,10,1) 92%); ;
+  width: 215px;
 }
 
 .autocompleteText li {
   padding: 5px;
   cursor: pointer;
+  font-style: italic;
+	text-align: center;
+	color: #dfc9c9;
+}
+
+ .autocompleteText li:hover{
+  color: black;
 }
