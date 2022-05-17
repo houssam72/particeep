@@ -1,4 +1,4 @@
- const movies =  [
+const movies =  [
   {
     id: '1',
     title: 'Oceans 8',
@@ -63,4 +63,4 @@
 ]
 
 
-export default movies
+export default movies;

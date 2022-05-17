@@ -1,14 +1,18 @@
 import React,{Component} from "react";
-import c from "classnames";
 import "./LikeDislike.css";
 
 class LikeDislike extends Component {
-  state = {
-    like: this.props.like,
-    dislike: this.props.dislikes,
-    likeActive: false,
-    dislikeActive: false
-  };
+  
+
+  constructor(props){
+     super(props)
+     this.state={
+        like: this.props.like,
+        dislike: this.props.dislikes,
+        likeActive: false,
+        dislikeActive: false
+     }
+  }
 
   setDislike() {
     this.setState({
@@ -46,7 +50,7 @@ class LikeDislike extends Component {
       <>
         <button
           onClick={() => this.handleLike()}
-          className={  c({ ["activeL"]: this.state.likeActive })}
+          className={this.state.likeActive ?"activeL" :"" }
         >
          <img  alt="" src="./like.png" width="30px"/>
         </button>
@@ -56,7 +60,7 @@ class LikeDislike extends Component {
         
 
         <button
-          className={c({ ["activeD"]: this.state.dislikeActive })}
+          className={ this.state.dislikeActive ?"activeD" :"" }
           onClick={() => this.handleDislike()}
         >
            <img alt="" src="./dislike.png" width="30px"/>

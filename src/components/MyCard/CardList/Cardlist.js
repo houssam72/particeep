@@ -7,26 +7,31 @@ class Cardlist extends Component{
    constructor(props){
      super(props)
      this.state={
-        pageNumber:0
+        pageNumber:0,
+        pagesVisited:0
      }
   }
-
-   
- 
 
     changePage = ({ selected }) => {
     
     this.setState({pageNumber:selected});
+    
   };
+ 
 
-   
+    
+
+
+    
+
    render(){
-  const users=this.props.movies.slice(0, 50);
+  const users=this.props.movies;
 
   
 
     const usersPerPage = 3;
-  const pagesVisited = this.state.pageNumber * usersPerPage;
+    
+  const pagesVisited = this.state.pageNumber * usersPerPage * this.props.searchTrueFalse;
 
 
 	const Cardcomponent=users
@@ -38,6 +43,8 @@ class Cardlist extends Component{
 		category={user.category}
 		likes={user.likes}
 		dislikes={user.dislikes}
+    user={user}
+    handleDelete={()=>this.props.handleDelete(user)}
 		/>
 	})
 

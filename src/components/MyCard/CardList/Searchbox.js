@@ -13,11 +13,14 @@ class Searchbox extends Component {
         suggestions:[],
         item:[],
         text:'',
-        ana:[],
+        ana:[]
      }
   }
 
+  
+  
    componentDidMount(){
+    console.log('bdine');
      this.props.movies.forEach(
        movie=>{ 
         if(this.state.ana.indexOf(movie.category) === -1){
@@ -25,6 +28,45 @@ class Searchbox extends Component {
           }
         })
    }
+
+   componentDidUpdate(prevProps,prevState){
+      let tab=[];
+         if(prevProps.movies!==this.props.movies){
+          
+             
+            
+            this.props.movies.forEach(
+       movie=>{ 
+        if(tab.indexOf(movie.category) === -1){
+        tab.push(movie.category)
+          }
+        })
+     
+          this.setState({ana:tab});  
+            console.log('change',tab);
+         }
+         
+         
+   }
+    
+
+ // shouldComponentUpdate(){
+ //    console.log('salina');
+ //  }
+
+    // click=()=>{
+     
+    //   console.log('click',this.state.ana);
+        
+    //      this.props.movies.forEach(
+    //    movie=>{ 
+    //     if(this.state.ana.indexOf(movie.category) === -1){
+    //     this.state.ana.push(movie.category)
+    //       }
+    //     })
+    //       this.setState({ana:[]}) ;
+    //   console.log('finClick',this.state.ana);
+    // }
 
    onTextChanged=(event)=>{
        const value=event.target.value;
@@ -59,8 +101,9 @@ class Searchbox extends Component {
    const {suggestions}=this.state;
    if(suggestions.length===0){
      return null;
-   }
+   }console.log(this.props.movies,this.state.ana,this.state.item,this.state.suggestions)
    return (
+
            <ul className="tc center br3">
            {suggestions.map((item)=><li onClick={()=>this.suggestionSelected(item)} >{item}</li>)}
            </ul>
@@ -77,6 +120,7 @@ class Searchbox extends Component {
                            className='pa3 ba br3  filterInput'
                             types='search'
                             placeholder='Filter per category'
+                            onClick={this.click}
                             onChange={this.props.searchchange}
                             onInput={this.onTextChanged}
                         />
